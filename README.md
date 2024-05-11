@@ -1,4 +1,4 @@
-# This template runs Blinky on STs NUCLEO-64 STM32L010 evaluation board.
+# This template runs Embassy's (https://github.com/embassy-rs/embassy) Blinky code on STs NUCLEO-64 STM32L010 evaluation board.
 
 Note: This eval board's microcontroller is an STM32L010RBT6.
 
