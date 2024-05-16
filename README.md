@@ -49,6 +49,7 @@ async fn main(_spawner: Spawner) {
     let p = embassy_stm32::init(Default::default());
     info!("Hello World!");
 
+                                                                // Change LED port as follows
     let mut led = Output::new(p.PA5, Level::High, Speed::Low);  // LED on port PA5
 
     loop {
