@@ -2,7 +2,7 @@
 
 Notes:
 - Embassy repository: https://github.com/embassy-rs/embassy
-- The microcontroller on the evaluation board is an STM32L010RBT6.
+- The microcontroller on the evaluation board is an STM32L010RBT6
 - Schematic: https://www.st.com/en/evaluation-tools/nucleo-l010rb.html#cad-resources
 
 First, clone the Embassy repository:
