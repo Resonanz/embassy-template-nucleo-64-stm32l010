@@ -1,30 +1,43 @@
-# This template runs Embassy's (https://github.com/embassy-rs/embassy) Blinky code on STs NUCLEO-64 STM32L010 evaluation board.
+# How to run Embassy's (https://github.com/embassy-rs/embassy) Blinky code on STs NUCLEO-64 STM32L010 evaluation board.
 
 Note: This eval board's microcontroller is an STM32L010RBT6.
 
-Clone this template:
+First, clone the Embassy repository:
 
-```git clone https://github.com/Resonanz/embassy-template-stm32l0.git```
+```git clone https://github.com/embassy-rs/embassy```
 
-cd into ```embassy-template-stm32l0``` and compile and run using:
+cd into embassy and ```code .``` to open VSCode with embassy as root folder.
 
-```cargo run --bin embassy-template-stm32l0```
+In VSCode so into the .cargo folder ```examples/stm32l0/.cargo``` and edit ```config.toml``` to update the chip type:
+
+```
+[target.'cfg(all(target_arch = "arm", target_os = "none"))']
+# replace your chip as listed in `probe-rs chip list`
+runner = "probe-rs run --chip STM32L010RBTx"
+
+[build]
+target = "thumbv6m-none-eabi"
+
+[env]
+DEFMT_LOG = "trace"
+```
+
+In VSCode find cargo.toml in the root folder and update the microcontroller type in ```[dependencies] embassy-stm32``` to ```stm32l010rb```.
+
+Connect the NUCLEO board USB to the computer. From the terminal cd into ```examples/stm32l0``` then compile and run using:
+
+```cargo run --bin blinky```
 
 This should eventually result in:
 
 ```
-Compiling embassy-template-stm32l0 v0.1.0 (/home/Github/embassy-template-stm32l0)
+Compiling embassy-template-stm32l0 v0.1.0 (/home/Github/embassy/examples/stm32l0)
   Finished dev [unoptimized + debuginfo] target(s) in 0.29s
-    Running `probe-rs run --chip STM32L010RBTx target/thumbv6m-none-eabi/debug/embassy-template-stm32l0`
+    Running `probe-rs run --chip STM32L010RBTx target/thumbv6m-none-eabi/debug/blinky`
       Erasing ✔ [00:00:08] [##################################] 59.00 KiB/59.00 KiB @ 6.63 KiB/s (eta 0s )
       Programming ✔ [00:00:05] [#################################] 59.00 KiB/59.00 KiB @ 10.67 KiB/s (eta 0s )    Finished in 14.44s
 ```
 
 The Blinky program code has compiled and uploaded into the microcontroller on the eval board. The green LED on the eval board should be blinking on and off.
 
-To change the LED flashing rate, edit ```main.rs``` then save and recompile.
-
-
-
-  
-
+To change the LED flashing rate, edit the delay times in ```main.rs``` then save and rerun.
