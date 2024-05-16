@@ -31,6 +31,40 @@ In VSCode find cargo.toml in the root folder and update the microcontroller type
  embassy-stm32 = ...
  ```
 
+In VSCode open src/blinky.rs and modify the LED ports as follows:
+
+```
+#![no_std]
+#![no_main]
+
+use defmt::*;
+use embassy_executor::Spawner;
+use embassy_stm32::gpio::{Level, Output, Speed};
+use embassy_time::Timer;
+use {defmt_rtt as _, panic_probe as _};
+use embassy_stm32::peripherals::
+
+#[embassy_executor::main]
+async fn main(_spawner: Spawner) {
+    let p = embassy_stm32::init(Default::default());
+    info!("Hello World!");
+
+    let mut led = Output::new(p.PA5, Level::High, Speed::Low);  // LED on port PA5
+
+    loop {
+        info!("high");
+        led.toggle();
+        //led.set_high();
+        Timer::after_millis(500).await;
+
+        info!("low");
+        led.toggle();
+        //led.set_low();
+        Timer::after_millis(500).await;
+    }
+}
+```
+
 Connect the NUCLEO board USB to the computer. From the terminal cd into ```examples/stm32l0``` then compile and run blinky using:
 
 ```cargo run --bin blinky```
