@@ -1,7 +1,8 @@
 ### Running Embassy's Blinky code on STs NUCLEO-64 STM32L010 evaluation board.
 
-- Note 1: Embassy repository: https://github.com/embassy-rs/embassy
-- Note 2: The microcontroller on the evaluation board is an STM32L010RBT6.
+Notes:
+- Note: Embassy repository: https://github.com/embassy-rs/embassy
+- Note: The microcontroller on the evaluation board is an STM32L010RBT6.
 
 First, clone the Embassy repository:
 
@@ -25,8 +26,10 @@ DEFMT_LOG = "trace"
 
 In VSCode find cargo.toml in the root folder and update the microcontroller type  to ```stm32l010rb``` under:
 
- ```[dependencies]
- embassy-stm32 = ...```.
+ ```
+ [dependencies]
+ embassy-stm32 = ...
+ ```
 
 Connect the NUCLEO board USB to the computer. From the terminal cd into ```examples/stm32l0``` then compile and run blinky using:
 
