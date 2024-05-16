@@ -1,7 +1,7 @@
 ### Running Embassy's Blinky code on STs NUCLEO-64 STM32L010 evaluation board.
 
-Note 1: Embassy repository: https://github.com/embassy-rs/embassy
-Note 2: The microcontroller on the evaluation board is an STM32L010RBT6.
+-- Note 1: Embassy repository: https://github.com/embassy-rs/embassy
+-- Note 2: The microcontroller on the evaluation board is an STM32L010RBT6.
 
 First, clone the Embassy repository:
 
