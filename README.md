@@ -1,14 +1,14 @@
-# How to run Embassy's (https://github.com/embassy-rs/embassy) Blinky code on STs NUCLEO-64 STM32L010 evaluation board.
+### How to run Embassy's (https://github.com/embassy-rs/embassy) Blinky code on STs NUCLEO-64 STM32L010 evaluation board.
 
-Note: This eval board's microcontroller is an STM32L010RBT6.
+Note: The microcontroller on this evaluation board is an STM32L010RBT6.
 
 First, clone the Embassy repository:
 
 ```git clone https://github.com/embassy-rs/embassy```
 
-cd into embassy and ```code .``` to open VSCode with embassy as root folder.
+cd into embassy and type ```code .``` to open VSCode with the current folder as the root folder.
 
-In VSCode so into the .cargo folder ```examples/stm32l0/.cargo``` and edit ```config.toml``` to update the chip type:
+In VSCode go into the (hidden) .cargo folder ```examples/stm32l0/.cargo``` and edit ```config.toml``` to update the chip type:
 
 ```
 [target.'cfg(all(target_arch = "arm", target_os = "none"))']
@@ -22,9 +22,12 @@ target = "thumbv6m-none-eabi"
 DEFMT_LOG = "trace"
 ```
 
-In VSCode find cargo.toml in the root folder and update the microcontroller type in ```[dependencies] embassy-stm32``` to ```stm32l010rb```.
+In VSCode find cargo.toml in the root folder and update the microcontroller type  to ```stm32l010rb``` under:
 
-Connect the NUCLEO board USB to the computer. From the terminal cd into ```examples/stm32l0``` then compile and run using:
+ ```[dependencies]
+ embassy-stm32 = ...```.
+
+Connect the NUCLEO board USB to the computer. From the terminal cd into ```examples/stm32l0``` then compile and run blinky using:
 
 ```cargo run --bin blinky```
 
